@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}    
+    <div class="container">
+        <form action="" method="post" novalidate>
+            <div class="row">
+                <div class="col s12"><h2 class="section-title">Add switch</h2></div>
+                        {{ form.hidden_tag() }}
+                        <div class="input-field col s6">
+                            {{ form.ipaddress.label(class_="active") }}
+                            {{ form.ipaddress(size=15) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form.vendor.label(class_="active") }}
+                            {{ form.vendor(size=16) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form.uplinkports.label(class_="active") }}
+                            {{ form.uplinkports(size=32) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form.community.label(class_="active") }}
+                            {{ form.community(size=32) }}                            
+                        </div>
+                        <div class="col s6">
+                            {{ form.submit(class_="btn") }}
+                        </div>
+            </div>
+        </form>
+    </div>
+    
+    
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="description" content="">
+        <title>{{ title }}</title>        
+        <!-- Materialize-->
+        <link href="{{ url_for('static', filename='admin/css/admin-materialize.min.css') }}" rel="stylesheet">
+        <!-- Material Icons-->
+        <link href="{{ url_for('static', filename='materialize/css/material-icons.css') }}" rel="stylesheet">
+        {%block style %}{% endblock %}
+    </head>
+    <body class="has-fixed-sidenav">
+        <header>
+        <div class="navbar-fixed">
+          <nav class="navbar white">
+            <div class="nav-wrapper"><a href="#!" class="brand-logo grey-text text-darken-4">Home</a>
+              <ul id="nav-mobile" class="right">  
+              </ul><a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
+            </div>
+          </nav>
+        </div>
+        <ul id="sidenav-left" class="sidenav sidenav-fixed">
+          <li><a href="" class="logo-container">Admin<i class="material-icons left">spa</i></a></li>
+          <li class="no-padding">
+            <li><a href="" class="waves-effect">Switches<i class="material-icons">web</i></a></li>
+            <li><a href="" class="waves-effect">Settings<i class="material-icons">settings</i></a></li>
+          </li>
+        </ul>
+        </header>
+        <main>
+          {% block content %}{% endblock %}
+        </main>
+      <!-- Scripts -->
+      <script src="{{ url_for('static', filename='jQuery/jquery-3.4.1.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='materialize/js/materialize.min.js') }}"></script>
+
+      <!-- External libraries -->
+      <script type="text/javascript" src="{{ url_for('static', filename='DataTables/datatables.min.js') }}"></script>
+      
+      <!-- Initialization script -->
+      <script src="{{ url_for('static', filename='admin/js/admin.js') }}"></script>
+      <script src="{{ url_for('static', filename='admin/js/init.js') }}"></script>
+      {% block scripts %}{% endblock %}
+    </body>
+  </html>

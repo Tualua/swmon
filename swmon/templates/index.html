@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2 class="section-title">Switches</h2>
+                <div class="card">
+                    <table class="row-border">
+                        <thead>
+                            <tr>
+                                <th>IP Address</th>
+                                <th>Vendor</th>
+                                <th>Uplink ports</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for switch in data %}
+                            <tr>
+                                <td><a class="action" href="{{ url_for('switches.show', id=switch['id']) }}">{{ switch['ipaddress'] }}</a></td>
+                                <td>{{ switch['vendor'] }}</td>
+                                <td>{{ switch['uplinkports'] }}</td>
+                                <td><a class="waves-effect waves-light btn">Edit</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
