@@ -17,7 +17,7 @@
                         <tbody>
                             {% for switch in data %}
                             <tr>
-                                <td><a class="action" href="{{ url_for('switches.show', id=switch['id']) }}">{{ switch['ipaddress'] }}</a></td>
+                                <td><a class="action" href="">{{ switch['ipaddress'] }}</a></td>
                                 <td>{{ switch['vendor'] }}</td>
                                 <td>{{ switch['uplinkports'] }}</td>
                                 <td><a class="waves-effect waves-light btn">Edit</a></td>
@@ -26,6 +26,8 @@
                         </tbody>
                     </table>
                 </div>
+                <a class="waves-effect waves-light btn" href="{{ url_for('switch.add') }}"><i class="material-icons right">add</i>Add</a>
+
             </div>
         </div>
     </div>
