@@ -1,14 +1,10 @@
 import ssl
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm.exc import NoResultFound
-from flask_migrate import Migrate
 from puresnmp import bulkwalk
 from librouteros import connect
 from librouteros.login import plain
 from librouteros.query import Key
-
-db = SQLAlchemy()
-migrate = Migrate()
+from .extensions import db
 
 
 class Router(db.Model):
@@ -40,9 +36,9 @@ class Router(db.Model):
         status = Key('status')
         data = api.path('/ip/dhcp-server/lease').select(
             ipaddress, macaddress, hostname).where(status == 'bound')
-        leases = {
-            l['mac-address']: ((l['active-address'], l['host-name']) if 'host-name' in l.keys() else (
-                l['active-address'], '')) for l in data}
+        leases = (
+            (l['mac-address'], l['active-address'], l['host-name']) if 'host-name' in l.keys() else (
+                l['mac-address'], l['active-address'], '') for l in data)
         return leases
 
     @staticmethod

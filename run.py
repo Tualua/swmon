@@ -1,4 +1,4 @@
-from swmon import create_app
+from swmon.app import create_app
 from swmon.models import db, Switch, Router, Settings
 
 app = create_app()

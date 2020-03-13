@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="{{ url_for('static', filename='DataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='DataTables/Buttons-1.6.1/css/buttons.dataTables.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div id="switch" data-switchid="{{ id|tojson }}" data-switchip={{ ip|tojson }}></div>
+
+    <div class="container" width="80%">
+        <div class="row">
+            <div class="col s12">
+                <h6 class="section-title">{{ ip }}</h6>
+
+                <div class="card">
+                    <table id="switchdata" class="row-border compact responsive nowrap stripe" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Switch #</th>
+                                <th>Port</th>
+                                <th>MAC</th>
+                                <th>VID</th>
+                                <th>IP</th>
+                                <th>Host</th>
+                                <th>Model</th>
+                                <th>HR</th>
+                                <th>Power</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='DataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='DataTables/Buttons-1.6.1/js/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='DataTables/JSZip-2.5.0/jszip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='page-scripts/switch.js') }}"></script>
+{% endblock %}
+{% block footer %}
+{% endblock %}

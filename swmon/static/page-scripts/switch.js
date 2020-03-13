@@ -5,7 +5,7 @@
 
         $('#switchdata').DataTable({
             responsive: false,
-            'ajax': '/switches/' + switchid + '/getswitchdata',
+            'ajax': '/switch/' + switchid + '/getdata',
             'columnDefs': [
                 {
                     targets: 0,
