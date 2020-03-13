@@ -13,11 +13,14 @@
     <div class="container">
         <form action="" method="post" novalidate>
             <div class="row">
-                <div class="col s12"><h2 class="section-title">Add switch</h2></div>
+                <div class="col s12"><h2 class="section-title">Edit switch</h2></div>
                         {{ form.hidden_tag() }}
                         <div class="input-field col s6">
-                            {{ form.ipaddress.label(class_="active") }}
+                            {{ form.ipaddress.label() }}
                             {{ form.ipaddress(size=15) }}
+                            {% for error in form.ipaddress.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="input-field col s6">
                             {{ form.vendor.label(class_="active") }}
@@ -37,6 +40,4 @@
             </div>
         </form>
     </div>
-    
-    
 {% endblock %}

@@ -1,5 +1,6 @@
 import ssl
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm.exc import NoResultFound
 from flask_migrate import Migrate
 from puresnmp import bulkwalk
 from librouteros import connect
@@ -12,8 +13,8 @@ migrate = Migrate()
 
 class Router(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    ipaddress = db.Column(db.String(15), index=True, unique=True)
-    port = db.Column(db.Integer)
+    ipaddress = db.Column(db.String(15), index=True, unique=True, nullable=False)
+    port = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return '{}'.format(self.ipaddress)
@@ -44,13 +45,21 @@ class Router(db.Model):
                 l['active-address'], '')) for l in data}
         return leases
 
+    @staticmethod
+    def get_router():
+        try:
+            router = Router.query.one()
+        except NoResultFound:
+            return None
+        return router
+
 
 class Switch(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    ipaddress = db.Column(db.String(15), index=True, unique=True)
-    vendor = db.Column(db.String(16), index=True)
-    uplinkports = db.Column(db.String(32))
-    community = db.Column(db.String(32))
+    ipaddress = db.Column(db.String(15), index=True, unique=True, nullable=False)
+    vendor = db.Column(db.String(16), index=True, nullable=False)
+    uplinkports = db.Column(db.String(32), nullable=False)
+    community = db.Column(db.String(32), nullable=False)
 
     def __repr__(self):
         return '{}'.format(self.ipaddress)

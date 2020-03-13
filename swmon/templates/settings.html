@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <nav class="navbar nav-extended">
+        <div class="nav-wrapper"><a href="#" class="brand-logo">Home</a><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
+        </div>
+        <div class="nav-content">
+        <ul class="tabs">            
+            <li class="tab"><a href="#tabrouter" class="active">Router</a></li>
+            <li class="tab"><a href="#tabsettings">Settings</a></li>
+        </ul>
+        </div>
+    </nav>
+    <div id="tabrouter" class="row">
+        <div class="container">
+            <form action="" method="post" novalidate>
+                <div class="row">
+                    <div class="col s12"><h2 class="section-title">Router</h2></div>
+                            {{ formRouter.hidden_tag() }}
+                            <div class="input-field col s6">
+                                {{ formRouter.ipaddress.label(class_="active") }}
+                                {{ formRouter.ipaddress(size=15) }}
+                            </div>
+                            <div class="input-field col s6">
+                                {{ formRouter.port.label(class_="active") }}
+                                {{ formRouter.port() }}
+                            </div>                            
+                            <div class="col s6">
+                                {{ formRouter.submitRouter(class_="btn") }}
+                            </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="tabsettings" class="row">
+
+    </div>
+{% endblock %}

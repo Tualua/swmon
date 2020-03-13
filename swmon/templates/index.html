@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
+{% block header %}
+<div class="navbar-fixed">
+    <nav class="navbar white">
+      <div class="nav-wrapper"><a href="#!" class="brand-logo grey-text text-darken-4">Home</a>
+        <ul id="nav-mobile" class="right">  
+        </ul><a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
+      </div>
+    </nav>
+  </div>
+{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -20,7 +30,7 @@
                                 <td><a class="action" href="">{{ switch['ipaddress'] }}</a></td>
                                 <td>{{ switch['vendor'] }}</td>
                                 <td>{{ switch['uplinkports'] }}</td>
-                                <td><a class="waves-effect waves-light btn">Edit</a></td>
+                                <td><a href="{{ url_for('switch.edit', id=switch['id'])}}" class="waves-effect waves-light btn">Edit</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

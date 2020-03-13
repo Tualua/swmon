@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, IPAddress, ValidationError
+from wtforms import StringField, IntegerField, SubmitField
+from wtforms.validators import DataRequired, NumberRange, IPAddress, ValidationError
 from .models import Switch
 
 
@@ -24,3 +24,16 @@ class SwitchForm(FlaskForm):
 
 class AddSwitchForm(SwitchForm):
     submit = SubmitField('Add switch')
+
+
+class EditSwitchForm(SwitchForm):
+    submit = SubmitField('Save')
+
+
+class EditRouterForm(FlaskForm):
+    ipaddress = StringField('IP Address', validators=[DataRequired(), IPAddress(
+        ipv4=True, ipv6=False, message='Valid IPv4 Address Required'
+    )])
+    port = IntegerField('Port', validators=[DataRequired(), NumberRange(
+        min=1, max=65535, message='Port range is from 1 to 65535')])
+    submitRouter = SubmitField('Save')
