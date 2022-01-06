@@ -1,7 +1,7 @@
 alembic==1.4.1
 amqp==2.5.2
 billiard==3.6.3.0
-celery==4.4.0
+celery==5.2.2
 Click==7.0
 entrypoints==0.3
 flake8==3.7.9
